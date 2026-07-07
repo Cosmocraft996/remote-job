@@ -178,6 +178,12 @@ CREATE TABLE jobs (
 pm2 start ecosystem.config.js
 ```
 
+### 使用 Docker + cron（阿里云推荐）
+
+适合部署在阿里云 ECS 上持续监控。容器每次执行一次抓取任务，由宿主机 cron 默认每 4 小时触发一次。
+
+详细步骤见 [docs/deployment/aliyun-docker.md](./docs/deployment/aliyun-docker.md)。
+
 ### 使用 node-cron
 
 在代码中添加：

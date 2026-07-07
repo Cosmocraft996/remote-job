@@ -1,0 +1,9 @@
+# Remote Job Bot 阿里云 ECS 定时任务示例
+# 默认每 4 小时执行一次。请按实际部署目录调整 /opt/remote-job。
+#
+# 使用方式：
+# 1. 确认已执行：mkdir -p /opt/remote-job/logs /opt/remote-job/debug
+# 2. 执行：crontab -e
+# 3. 将下面这一行复制进去，保存后生效。
+
+0 */4 * * * cd /opt/remote-job && flock -n /tmp/remote-job.lock docker compose run --rm remote-job >> /opt/remote-job/logs/cron.log 2>&1

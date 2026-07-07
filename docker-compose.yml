@@ -1,0 +1,20 @@
+services:
+  remote-job:
+    build:
+      context: .
+    image: remote-job-bot:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NODE_ENV: production
+      LOCAL: "false"
+      CHROME_EXECUTABLE_PATH: /usr/bin/chromium
+      TZ: Asia/Shanghai
+    init: true
+    shm_size: "1gb"
+    volumes:
+      - ./debug:/app/debug
+      # 如需 BOSS 直聘 Cookie，取消下一行注释，并在项目根目录放置 cookies.json。
+      # - ./cookies.json:/app/cookies.json:ro
+    restart: "no"
