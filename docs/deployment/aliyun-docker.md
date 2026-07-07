@@ -21,19 +21,19 @@
 示例部署目录：
 
 ```bash
-/opt/remote-job
+~/remote-job
 ```
 
 在服务器上准备目录：
 
 ```bash
-mkdir -p /opt/remote-job/logs /opt/remote-job/debug
+mkdir -p ~/remote-job/logs ~/remote-job/debug
 ```
 
-将项目代码放到 `/opt/remote-job` 后进入目录：
+将项目代码放到 `~/remote-job` 后进入目录：
 
 ```bash
-cd /opt/remote-job
+cd ~/remote-job
 ```
 
 ## 环境变量
@@ -99,7 +99,7 @@ crontab -e
 添加默认每 4 小时执行一次的任务：
 
 ```cron
-0 */4 * * * cd /opt/remote-job && flock -n /tmp/remote-job.lock docker compose run --rm remote-job >> /opt/remote-job/logs/cron.log 2>&1
+0 */4 * * * cd ~/remote-job && flock -n /tmp/remote-job.lock docker compose run --rm remote-job >> ~/remote-job/logs/cron.log 2>&1
 ```
 
 可按需调整频率：
@@ -113,13 +113,13 @@ crontab -e
 ## 查看日志
 
 ```bash
-tail -n 200 /opt/remote-job/logs/cron.log
+tail -n 200 ~/remote-job/logs/cron.log
 ```
 
 实时查看：
 
 ```bash
-tail -f /opt/remote-job/logs/cron.log
+tail -f ~/remote-job/logs/cron.log
 ```
 
 ## 更新部署
@@ -127,7 +127,7 @@ tail -f /opt/remote-job/logs/cron.log
 代码更新后重新构建镜像：
 
 ```bash
-cd /opt/remote-job
+cd ~/remote-job
 docker compose build
 docker compose run --rm remote-job
 ```

@@ -1,6 +1,7 @@
 {
   "name": "remote-job-bot-node",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.15.9",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
